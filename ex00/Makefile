@@ -9,8 +9,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++17
 TARGET = main
 
 # Source files
-SRCS =	main.cpp
-		
+SRCS =	main.cpp \
+		ScalarConverter.cpp	
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

@@ -6,8 +6,53 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 12:54:23 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/24 08:15:59 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:52:33 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.hpp"
+
+#include "ScalarConverter.hpp"
+
+int main()
+{
+	
+	std::cout << "=== Test 1: char ===" << std::endl;
+    ScalarConverter::convert("'c'");
+    
+    std::cout << "\n=== Test 2: int ===" << std::endl;
+    ScalarConverter::convert("42");
+    
+    std::cout << "\n=== Test 3: float ===" << std::endl;
+    ScalarConverter::convert("42.0f");
+    
+    std::cout << "\n=== Test 4: double ===" << std::endl;
+    ScalarConverter::convert("42.0");
+    
+    std::cout << "\n=== Test 5: negative int ===" << std::endl;
+    ScalarConverter::convert("-42");
+    
+    std::cout << "\n=== Test 6: float with -inf ===" << std::endl;
+    ScalarConverter::convert("-inff");
+    
+    std::cout << "\n=== Test 7: double with +inf ===" << std::endl;
+    ScalarConverter::convert("+inf");
+    
+    std::cout << "\n=== Test 8: nan float ===" << std::endl;
+    ScalarConverter::convert("nanf");
+    
+    std::cout << "\n=== Test 9: nan double ===" << std::endl;
+    ScalarConverter::convert("nan");
+    
+    std::cout << "\n=== Test 10: invalid input ===" << std::endl;
+    ScalarConverter::convert("invalid");
+    
+
+	std::cout << "\n=== Test of subject ===" << std::endl;
+    ScalarConverter::convert("0");
+	ScalarConverter::convert("man");
+	ScalarConverter::convert("42.0f");
+
+	
+    return (0);
+}
