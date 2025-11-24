@@ -6,14 +6,14 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:54 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/24 09:13:24 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/24 10:47:35 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once 
 
 #include <string>
-#include <ostream>
+#include <iostream>
 
 class ScalarConverter
 {
