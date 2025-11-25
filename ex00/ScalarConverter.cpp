@@ -6,13 +6,15 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/24 18:05:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:12:42 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <cctype>
 #include "math.h"
+#include <iomanip>
+#include <climits>
 
 // first what type \// convert
 // handle invalid inputs
@@ -38,75 +40,98 @@ bool check_for_double (std::string nbr)
 };
 
 
-bool check_for_int(std::string nbr)
-{
-	try{
-		std::stoi(nbr);
-		return true;
-	}
-	catch (const std::invalid_argument&)
-	{
-		return false;
-	}
-	catch (const std::out_of_range&)
-	{
-		return false;
-	}
-}
-
 bool check_for_char(std::string nbr)
 {
-	try{
-		std::itoa(nbr);
+	if(nbr.length() == 3 && nbr[0] == '\'' && nbr[2] == '\'')
 		return true;
-	}
-	catch (const std::invalid_argument&)
-	{
-		return false;
-	}
-	catch (const std::out_of_range&)
-	{
-		return false;
-	}
+	if(nbr.length() == 1 && std::isprint(nbr[0]))
+		return true;
+	return false;
 	
 }
+void handle_char(std::string nbr)
+{
+	char c;
+	if(check_for_char(nbr))
+	{
+		if(nbr.length() == 3 && nbr[0] == '\'')
+			c = nbr[1];
+		else
+			c = nbr[0];
+	}
+	std::cout << "char: " << c << "'" << std::endl;
+	std::cout << " int:" << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+    std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+}
 
+void char_conversion(double doNbr, bool isNan, bool isInf)
+{
+	if (isNan || isInf)
+		std::cout << "char: impossible" << std::endl;
+	else if (doNbr < 0 || doNbr > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (!std::isprint(static_cast<int>(doNbr)))
+		std::cout << "char: impossible" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(doNbr) << "'" << std::endl;
+}
+
+void int_conversion(double doNbr, bool isNan, bool isInf)
+{
+	if (isNan || isInf || doNbr > INT_MAX || doNbr < INT_MIN)
+		std::cout << "int: " << "impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(doNbr) << std::endl;
+}
+
+void float_conversion(double doNbr, bool isInf, bool isNan)
+{
+	float floatNbr = static_cast<float>(doNbr);
+	if (isInf || isNan)
+	 	std::cout << "float: " << floatNbr << "f" << std::endl;
+	else if (floatNbr == static_cast<float>(static_cast<int>(floatNbr)))
+        std::cout << "float: " << floatNbr << ".0f" << std::endl;
+    else
+        std::cout << "float: " << floatNbr << std::endl;
+}
+
+void doulbe_conversion(double doNbr, bool isInf, bool isNan)
+{
+	if (isInf || isNan)
+		std::cout << "double: " << doNbr << std::endl;
+	else if (doNbr == static_cast<double>(static_cast<int>(doNbr)))
+		std::cout << "double: " << doNbr << ".0" << std::endl;
+    else
+        std::cout << "double: " << doNbr << std::endl;
+}
 // cast and handle the errors 
 void ScalarConverter::convert(std::string nbr)
 {
-	
-
-	std::string stringNbr;
-	int IntNbr;
-	float floatNbr;
-	double doNbr;
-
-	//int identifier;
-
-	//IntNbr = static_cast<int>(nbr);
-	
-	
+	if(check_for_char(nbr))
+	{
+		handle_char(nbr);
+		return;
+	}
 	
 	if (check_for_double(nbr) == false)
 	{
 		text_impossible();
         return;
 	}
-	//doNbr = static_cast<double>(nbr);
-	doNbr = std::stod(nbr);
-	floatNbr = std::stof(nbr);
-	if(!check_for_int(nbr))
-		IntNbr = '*';
-	
-	if(!check_for_char(nbr))
-		stringNbr = "inpossible";
-	
-	
-	std::cout << "char: " << stringNbr << std::endl;
-    std::cout << "int: "<< IntNbr << std::endl;
-    std::cout << "float: " << floatNbr << std::endl;
-    std::cout << "double: " << doNbr << std::endl;
 
+
+	double doNbr = std::stod(nbr);
+	//float floatNbr = std::stof(nbr);
+
+	bool isNan = std::isnan(doNbr);
+    bool isInf = std::isinf(doNbr);
+
+	char_conversion(doNbr, isNan, isInf);
+	int_conversion(doNbr, isNan, isInf);
+	float_conversion(doNbr, isInf, isNan);
+	doulbe_conversion(doNbr, isInf, isNan);
+		
 	return;
 
 	
@@ -140,13 +165,14 @@ std::stof -> string to float
 convert 0char: Non displayabl
 eint: 0float:
  0.0fdouble: 
- 0.0./convert 
- nanchar: impossible
+ 0.0
+ ./convert nan
+ char: impossible
  int: impossible
  float: nanf
  double: nan
  ./convert 42.0f
 char:'*'
-int: 42float: 
-42.0fdouble:
-42.011*/
+int: 42
+float: 42.0f
+double:  42.011*/
