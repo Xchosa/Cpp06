@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 12:54:23 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/25 11:34:05 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/25 11:11:05 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,8 @@ int main()
     std::cout << "\n=== Test 9: nan double ===" << std::endl;
     ScalarConverter::convert("nan");
     
-    std::cout << "\n=== Test 10: 0.0001 === " << std::endl;
-    ScalarConverter::convert("0.0001");
-    
-     std::cout << "\n=== Test 11: 1e10 ===" << std::endl;
-    ScalarConverter::convert("1e10");
+    std::cout << "\n=== Test 10: invalid input ===" << std::endl;
+    ScalarConverter::convert("invalid");
     
 
 	std::cout << "\n=== Test of subject ===" << std::endl;
@@ -59,8 +56,6 @@ int main()
 
 	std::cout << "Test: 42.0f===" << std::endl;
 	ScalarConverter::convert("42.0f");
-
-    
 
 	
     return (0);

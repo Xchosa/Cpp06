@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/25 11:35:25 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/25 11:08:59 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void float_conversion(double doNbr, bool isInf, bool isNan)
 	else if (floatNbr == static_cast<float>(static_cast<int>(floatNbr)))
         std::cout << "float: " << floatNbr << ".0f" << std::endl;
     else
-        std::cout << "float: " << floatNbr << "f"<< std::endl;
+        std::cout << "float: " << floatNbr << std::endl;
 }
 
 void double_conversion(double doNbr, bool isInf, bool isNan)
