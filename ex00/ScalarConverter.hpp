@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:54 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/24 10:47:35 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/25 11:05:24 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ class ScalarConverter
 
 
 	public:
-	//ScalarConverter();
-	//~ScalarConverter();
-	//ScalarConverter(const ScalarConverter &object);
-	//ScalarConverter& operator= (const ScalarConverter &object);
+	ScalarConverter(){};
+	~ScalarConverter(){};
+	ScalarConverter(const ScalarConverter &object);
+	ScalarConverter& operator= (const ScalarConverter &object);
 	static void convert(std::string nbr);
 	
 };

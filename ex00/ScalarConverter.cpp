@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/25 10:12:42 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/25 11:08:59 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,22 @@
 #include <iomanip>
 #include <climits>
 
-// first what type \// convert
-// handle invalid inputs
+
+ScalarConverter::ScalarConverter(const ScalarConverter &object)
+{
+	(void)object;
+};
+ScalarConverter& ScalarConverter::operator= (const ScalarConverter &object)
+{
+	(void)object;
+    return (*this);
+}
 
 void text_impossible();
 
 
 bool check_for_double (std::string nbr)
 {
-	// try to convert nbr into doulbe 
 	try{
 		std::stod(nbr);
 		return true;
@@ -44,25 +51,42 @@ bool check_for_char(std::string nbr)
 {
 	if(nbr.length() == 3 && nbr[0] == '\'' && nbr[2] == '\'')
 		return true;
-	if(nbr.length() == 1 && std::isprint(nbr[0]))
-		return true;
+	//if(nbr.length() == 1 && std::isprint(nbr[0]))
+	//	return true;
 	return false;
 	
 }
 void handle_char(std::string nbr)
 {
-	char c;
-	if(check_for_char(nbr))
+	char c = '\0';
+	
+	if(nbr.length() == 3 && nbr[0] == '\'' && nbr[2] == '\'')
 	{
-		if(nbr.length() == 3 && nbr[0] == '\'')
+		if(std::isprint(nbr[1]))
 			c = nbr[1];
 		else
-			c = nbr[0];
+		{
+			std::cout << "char: Non displayable"  << std::endl;
+			std::cout << "int:" << static_cast<int>(c) << std::endl;
+			std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+			std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+			return;
+		}
 	}
-	std::cout << "char: " << c << "'" << std::endl;
-	std::cout << " int:" << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-    std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+
+	else if(nbr.length() == 1 && std::isprint(nbr[0]))
+	{
+		c = nbr[0];
+		std::cout << "char: " << c << std::endl;
+		std::cout << "int:" << static_cast<int>(c) << std::endl;
+		std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+		return;
+	}
+	else
+	{
+		text_impossible();
+	}
 }
 
 void char_conversion(double doNbr, bool isNan, bool isInf)
@@ -72,7 +96,7 @@ void char_conversion(double doNbr, bool isNan, bool isInf)
 	else if (doNbr < 0 || doNbr > 127)
 		std::cout << "char: impossible" << std::endl;
 	else if (!std::isprint(static_cast<int>(doNbr)))
-		std::cout << "char: impossible" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(doNbr) << "'" << std::endl;
 }
@@ -96,7 +120,7 @@ void float_conversion(double doNbr, bool isInf, bool isNan)
         std::cout << "float: " << floatNbr << std::endl;
 }
 
-void doulbe_conversion(double doNbr, bool isInf, bool isNan)
+void double_conversion(double doNbr, bool isInf, bool isNan)
 {
 	if (isInf || isNan)
 		std::cout << "double: " << doNbr << std::endl;
@@ -130,7 +154,7 @@ void ScalarConverter::convert(std::string nbr)
 	char_conversion(doNbr, isNan, isInf);
 	int_conversion(doNbr, isNan, isInf);
 	float_conversion(doNbr, isInf, isNan);
-	doulbe_conversion(doNbr, isInf, isNan);
+	double_conversion(doNbr, isInf, isNan);
 		
 	return;
 
@@ -162,11 +186,13 @@ std::stof -> string to float
 //double: 42.011
 
 /*
-convert 0char: Non displayabl
-eint: 0float:
- 0.0fdouble: 
- 0.0
- ./convert nan
+convert 0
+char: Non displayable
+int: 0
+float:0.0f
+double: 0.0
+
+./convert nan
  char: impossible
  int: impossible
  float: nanf
