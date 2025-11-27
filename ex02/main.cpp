@@ -6,12 +6,15 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:36:50 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/27 09:51:54 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/27 10:05:37 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
+
+#include <thread> 
+#include <chrono> 
 
 int main()
 {
@@ -22,6 +25,7 @@ int main()
 
 	std::cout << "==== test generating random classes ====" << std::endl;
 	test_1 = generate();
+	std::this_thread::sleep_for(70);
 	test_2 = generate();
 	
 	
