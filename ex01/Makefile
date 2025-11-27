@@ -10,7 +10,8 @@ TARGET = main
 
 # Source files
 SRCS =	main.cpp \
-		ScalarConverter.cpp	
+		ScalarConverter.cpp	\
+		Serializer.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

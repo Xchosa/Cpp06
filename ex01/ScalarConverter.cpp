@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/25 11:08:59 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:22:04 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ bool check_for_char(std::string nbr)
 {
 	if(nbr.length() == 3 && nbr[0] == '\'' && nbr[2] == '\'')
 		return true;
-	//if(nbr.length() == 1 && std::isprint(nbr[0]))
-	//	return true;
 	return false;
 	
 }

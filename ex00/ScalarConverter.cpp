@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/27 16:20:47 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:42:08 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ void text_impossible();
 
 
 bool check_for_double (std::string nbr)
-{
-
-	//if (nbr.length() > 0 && nbr[nbr.length() - 1] == 'f')
-    //    nbr = nbr.substr(0, nbr.length() - 1);
-	
+{	
 	try{
 		std::stod(nbr);
 		return true;
@@ -53,13 +49,9 @@ bool check_for_double (std::string nbr)
 
 bool check_for_char(std::string nbr)
 {
-	//if(nbr.length() == 3 && nbr[0] == '\'' && nbr[2] == '\'')
-	//	return true;
-	//if(std::isalnum(nbr))
-	if(std::isprint(nbr[0]) && nbr.length() == 1)
+
+	if(std::isprint(nbr[0]) && nbr.length() == 1 && !std::isdigit(nbr[0]))
 		return true;
-	//if(nbr.length() == 1 && std::isprint(nbr[0]))
-	//	return true;
 	return false;
 	
 }
@@ -72,16 +64,7 @@ void handle_char(std::string nbr)
 	{
 		c = nbr[0];
 	}
-	//else
-	//{
-	//	text_impossible();
-	//	return;
-	//}
-	//std::cout << "char: " << c << std::endl;
-	//std::cout << "int:" << static_cast<int>(c) << std::endl;
-	//std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-	//std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
-	//return;
+	
 	if(static_cast<int>(nbr[0]) <= 32)
 	{
 		std::cout << "char: Non displayable"  << std::endl;
@@ -91,20 +74,6 @@ void handle_char(std::string nbr)
 		return;
 	}
 	
-	//if(static_cast<int>(nbr)) < 32)
-	//{
-	//	if(std::isprint(nbr[0]))
-	//		c = nbr[1];
-	//	else
-	//	{
-	//		std::cout << "char: Non displayable"  << std::endl;
-	//		std::cout << "int:" << static_cast<int>(c) << std::endl;
-	//		std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-	//		std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
-	//		return;
-	//	}
-	//}
-
 	else if(nbr.length() == 1 && std::isprint(nbr[0]))
 	{
 		c = nbr[0];
