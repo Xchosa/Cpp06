@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 08:19:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/27 17:42:08 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:27:13 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ bool check_for_char(std::string nbr)
 void handle_char(std::string nbr)
 {
 	char c = '\0';
-	
-	//if(nbr.length() == 1)
+
 	if(nbr.length() == 1 && std::isprint(nbr[0]))
 	{
 		c = nbr[0];
@@ -132,7 +131,6 @@ void double_conversion(double doNbr, bool isInf, bool isNan)
 
 
 
-
 // cast and handle the errors 
 void ScalarConverter::convert(std::string nbr)
 {
@@ -148,10 +146,7 @@ void ScalarConverter::convert(std::string nbr)
         return;
 	}
 
-
 	double doNbr = std::stod(nbr);
-	//float floatNbr = std::stof(nbr);
-
 	bool isNan = std::isnan(doNbr);
     bool isInf = std::isinf(doNbr);
 

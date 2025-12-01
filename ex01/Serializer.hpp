@@ -6,13 +6,14 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:46:16 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/25 16:16:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:28:57 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <string>
 #include <cstdint>
+#include <iostream>
 
 struct Data
 {

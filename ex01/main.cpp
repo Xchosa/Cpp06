@@ -6,13 +6,12 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 12:54:23 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/25 16:25:55 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:35:54 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-
-#include "ScalarConverter.hpp"
+#include <cassert>
 
 int main()
 {
@@ -42,10 +41,10 @@ int main()
     // Verify we can still access the data
     std::cout << "Deserialized data: id=" << deserialized->id << ", name=" << deserialized->name <<  ", value:" << original->value << std::endl;
 
+    assert(deserialized == original);
+    std::cout << "Serialization test passed!" << std::endl;
 
     delete original;
     return 0;
 
-	
-    return (0);
 }

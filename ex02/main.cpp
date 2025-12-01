@@ -6,13 +6,13 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:36:50 by poverbec          #+#    #+#             */
-/*   Updated: 2025/11/27 10:05:37 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:40:03 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
-
+#include <iostream>
 #include <thread> 
 #include <chrono> 
 
@@ -25,14 +25,14 @@ int main()
 
 	std::cout << "==== test generating random classes ====" << std::endl;
 	test_1 = generate();
-	std::this_thread::sleep_for(70);
+	std::this_thread::sleep_for(std::chrono::milliseconds(70));
 	test_2 = generate();
 	
 	
-	std::cout << "==== identify Test 2 ====" << std::endl;
-	identify(test_2);
 	std::cout << "==== identify Test 1 ====" << std::endl;
 	identify(test_1);
+	std::cout << "==== identify Test 2 ====" << std::endl;
+	identify(test_2);
 	std::cout << std::endl;
 	std::cout << "==== identify Test 1 again(1) ====" << std::endl;
 	delete test_1;
