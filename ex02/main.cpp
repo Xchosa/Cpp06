@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:36:50 by poverbec          #+#    #+#             */
-/*   Updated: 2025/12/01 10:40:03 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/12/01 11:11:30 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,29 @@ int main()
 	std::cout << "==== identify Test 2 ====" << std::endl;
 	identify(test_2);
 	std::cout << std::endl;
-	std::cout << "==== identify Test 1 again(1) ====" << std::endl;
-	delete test_1;
-	test_1 = generate();
-	std::cout << "==== identify Test 1 again(2) ====" << std::endl;
-	identify(test_1);
+	std::cout << "==== identify Test 3 ====" << std::endl;
+	test_3 = generate();
+	identify(test_3);
 	std::cout << std::endl;
 	
-	test_3 = generate();
+	
+	
+
+	identify(*test_1);
+	identify(*test_2);
+	identify(*test_3);
+
+
+
+	
 	delete test_1;
 	delete test_2;
 	delete test_3;
+
+
+
+
+	
 	return 0;
 	
 	
